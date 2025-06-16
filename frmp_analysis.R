@@ -13,6 +13,7 @@ library(sjmisc)
 library(tidyverse)
 library(shiny)
 library(ggplot2)
+library(plotly)
 
 # Data Cleaning / EDA
 df_clean <- read_excel("../frmp23-24.xlsx", sheet = 2, col_names = FALSE)
@@ -51,9 +52,6 @@ df_clean <- df_clean %>%
     filter(!is.na(`Enrollment (Ages 5-17)`) & `Enrollment (Ages 5-17)` != 0) %>%
     filter(!is.na(`Enrollment (K-12)`) & `Enrollment (K-12)` != 0) %>%
     select(-`Academic Year`, -`County Code`, -`School Code`, -`District Code`, -`CALPADS Fall 1 Certification Status`)
-
-# You can view results interactively:
-View(df_clean)
 
 # basic counts of distinct values
 num_districts <- n_distinct(df_clean$`District Name`)
@@ -174,7 +172,8 @@ tab_corr(
     use = "pairwise.complete.obs",
     file = "FRPM_Correlation_Matrix.html"
 )
-browseURL("FRPM_Correlation_Matrix.html")
+# uncomment to view correlation matrix
+# browseURL("FRPM_Correlation_Matrix.html")
 
 # note: correlation matrices more useful for columns that are numeric
 # all p-values are less than 0.05 meaning they are statistically significant

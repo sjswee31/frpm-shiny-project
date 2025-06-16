@@ -1,3 +1,5 @@
+source("../frmp_analysis.R")
+
 # Shiny App 2
 
 # DEFINE REGIONS 

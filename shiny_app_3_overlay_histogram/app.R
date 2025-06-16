@@ -1,3 +1,5 @@
+source("../frmp_analysis.R")
+
 # Shiny App 3
 # UI 
 ui <- fluidPage(
